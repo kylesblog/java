@@ -1,3 +1,3 @@
 # Summary
 
-* [API网关ReleaseNote](0API网关ReleaseNote.md)
+* [API网关ReleaseNote](SUMMARY.md)
