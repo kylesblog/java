@@ -16,7 +16,7 @@
 + Api-Gateway-Service 负责收集监控日志、生成各种运维管理报表、自动告警等；
 + Api-Gateway-stream 负责收集程序的运行日志到es,提供更全面的日志信息以及灵活的日志报表；
 
- ![API网关应用架构](https://github.com/xie905528463/Hello-World/raw/master/gateway-architecture.jpg)
+ ![API网关应用架构](https://github.com/xie905528463/Hello-World/master/gateway-architecture.jpg)
 <center>API网关应用架构设计图</center>
 
 
