@@ -55,13 +55,13 @@
 
 ### 4. 部分代码展示
  + Gateway-Synspeed做状态同步
-   <center>![](./code3.jpg)</center>
+   ![](https://github.com/xie905528463/Hello-World/blob/master/code3.jpg)
    
  + Eureka Client端主动下线
-  <center>![](./code1.jpg)</center>
+ ![](https://github.com/xie905528463/Hello-World/blob/master/code1.jpg)
  
  +  监听方法
-   <center>![](./code2.jpg)</center>
+ ![](https://github.com/xie905528463/Hello-World/blob/master/code2.jpg)
 
  ### 5. 安全措施-ip白名单设计
  + 考虑到限制非法ip的访问，决定采用ip白名单设计，只允许部分许可ip访问系统，未许可ip一律禁止访问，减少非法请求。 
