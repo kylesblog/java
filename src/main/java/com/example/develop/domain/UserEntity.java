@@ -1,4 +1,4 @@
-package com.example.develop.vo;
+package com.example.develop.domain;
 
 import java.io.Serializable;
 

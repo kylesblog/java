@@ -12,8 +12,8 @@ import java.util.Map;
 @Repository
 public class BaseResponsitory {
 
-//    @Autowired
-//    JdbcTemplate jdbcTemplate;
+    @Autowired
+    JdbcTemplate jdbcTemplate;
 
     public List<Map<Object,Object>> getDatas(){
         String sql = " select * from pandora_folder where folder_name = ? ";

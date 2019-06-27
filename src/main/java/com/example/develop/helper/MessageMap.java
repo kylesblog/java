@@ -1,7 +1,6 @@
-package com.example.develop.message;
+package com.example.develop.helper;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.mysql.cj.protocol.Message;
 
 public class MessageMap {
    static ObjectMapper objectMapper = new ObjectMapper();

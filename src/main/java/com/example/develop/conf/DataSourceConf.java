@@ -1,4 +1,3 @@
-/*
 package com.example.develop.conf;
 
 
@@ -8,21 +7,18 @@ import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
-import org.springframework.stereotype.Component;
 
 import javax.sql.DataSource;
 
-@Component
 @Configuration
 public class DataSourceConf {
 
-*/
-/*    @Bean
+    @Bean
     @ConfigurationProperties(prefix = "spring.datasource")
     @Primary
     public DataSource getDataSource() {
         return DataSourceBuilder.create().build();
-    }*//*
+    }
 
 
 
@@ -39,4 +35,3 @@ public class DataSourceConf {
         return properties.initializeDataSourceBuilder().build();
     }
 }
-*/
