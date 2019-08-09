@@ -33,7 +33,7 @@
 <br>
 
 
-<center>![通知下线](./docs/img/NoticeOffline.png)</center>
+<center>![通知下线](NoticeOffline.png)</center>
 <center>网关主动感知服务下线思路图</center><br>
 
   + Gateway-SynchSpeed 相当于一个代理服务，它对外提供REST API来负责响应调用方的下线请求，同时会将生产者的状态同步到 Eureka Server 和 网关核心，起着 状态同步 和 软事物 的作用。
