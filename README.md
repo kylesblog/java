@@ -15,7 +15,7 @@
 ### 2. 网关与Eureka结合使用
 + Netflix OSS 提供了一个客户端服务发现的好例子。Eureka Server 为注册中心，Zuul 相对于Eureka Server来说是Eureka Client,Zuul 会把 Eureka Server 端服务列表缓存到本地，并以定时任务的形式更新服务列表，同时zuul通过本地列表发现其它服务，使用Ribbon实现客户端负载均衡。
 
-<center>![](/docs/img/zuulAndEureka.jpg)</center>
+<center>![](./docs/img/zuulAndEureka.jpg)</center>
 <center>网关与Eureka结合使用原理图</center><br>
 
 + 正常情况下，调用方对网关发起请求即刻能得到响应。但是当对生产者做缩容、下线、升级的情况下，由于Eureka这种多级缓存的设计结构和定时更新的机制，LoadBalance 端的服务列表B存在更新不及时的情况(由上篇文章《Eureka 缓存机制》可知，服务消费者最长感知时间将无限趋近240s），如果这时消费者对网关发起请求，LoadBalance 会对一个已经不存在的服务发起请求，请求是会超时的。
@@ -33,7 +33,7 @@
 <br>
 
 
-<center>![通知下线](/docs/img/NoticeOffline.png)</center>
+<center>![通知下线](./docs/img/NoticeOffline.png)</center>
 <center>网关主动感知服务下线思路图</center><br>
 
   + Gateway-SynchSpeed 相当于一个代理服务，它对外提供REST API来负责响应调用方的下线请求，同时会将生产者的状态同步到 Eureka Server 和 网关核心，起着 状态同步 和 软事物 的作用。
@@ -45,7 +45,7 @@
 
 
 ##### 3.2 实现步骤
-<center>![通知下线](/docs/img/flowchart.jpg)</center>
+<center>![通知下线](./docs/img/flowchart.jpg)</center>
 <center>网关主动感知服务下线实现流程图</center><br>
 
 **步骤说明：**<br>
@@ -74,7 +74,7 @@
 ### 4. 补偿机制
 
  + Eureka 提供了一种安全保护机制。Eureka Client 从 Eureka Server 更新服务列表前，会校验相关Hash值是否改变( Client 服务列表被修改，hash值会改变)，如果改变，更新方式会从增量更新变成全量更新,（由《Eureka 缓存机制》可知这30s内  readOnlyCacheMap 和 readWriteCacheMap 的数据可能存在差异），如果Client端缓存列表被readOnlyCacheMap 覆盖，最终会导致 Ribbon 端服务列表与 readWriteCacheMap 数据不一致。
-<center>![通知下线](/docs/img/listener.jpg)</center>
+<center>![通知下线](./docs/img/listener.jpg)</center>
 <center>网关主动感知服务下线实现流程图</center><br>
  
  + 针对 Eureka 这种机制，引入监听器 EurekaEventListener 作为补偿机制，它会监听 Eureka Client 全量拉取事件,对于缓存中未超过30s的服务，将其状态重新设置成 `OUT_OF_SERVICE` 。
@@ -94,10 +94,10 @@
 
 ### 7. 代码片段展示
  + Gateway-SynchSpeed 做状态同步
-   <center>![](/docs/img/code3.jpg)</center>
+   <center>![](./docs/img/code3.jpg)</center>
   
  +  EurekaEventListener 处理缓存数据
-   <center>![](/docs/img/code2.jpg)</center>
+   <center>![](./docs/img/code2.jpg)</center>
    
 
 
