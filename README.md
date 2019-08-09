@@ -15,7 +15,7 @@
 ### 2. 网关与Eureka结合使用
 + Netflix OSS 提供了一个客户端服务发现的好例子。Eureka Server 为注册中心，Zuul 相对于Eureka Server来说是Eureka Client,Zuul 会把 Eureka Server 端服务列表缓存到本地，并以定时任务的形式更新服务列表，同时zuul通过本地列表发现其它服务，使用Ribbon实现客户端负载均衡。
 
-<center>![](https://raw.githubusercontent.com/xie905528463/Hello-World/xx/docs/img/zuulAndEureka.jpg)</center>
+<center>![](https://raw.githubusercontent.com/xie905528463/Hello-World/raw/xx/docs/img/zuulAndEureka.jpg)</center>
 <center>网关与Eureka结合使用原理图</center><br>
 
 + 正常情况下，调用方对网关发起请求即刻能得到响应。但是当对生产者做缩容、下线、升级的情况下，由于Eureka这种多级缓存的设计结构和定时更新的机制，LoadBalance 端的服务列表B存在更新不及时的情况(由上篇文章《Eureka 缓存机制》可知，服务消费者最长感知时间将无限趋近240s），如果这时消费者对网关发起请求，LoadBalance 会对一个已经不存在的服务发起请求，请求是会超时的。
